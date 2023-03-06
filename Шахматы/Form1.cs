@@ -132,22 +132,44 @@ namespace Шахматы
                     dataGridView1.Rows[y].Cells[x].Value = board[x, y];
         }
 
-        private void setKnight(int i, int j, int[,] board)
-        {
+        private bool setKnight(int x, int y, int[,] board, int[,] step, int n)
+        {            
+            if ((x < 0) || (x >= X) || (y < 0) || (y >= X))
+                return false;
 
+            if (board[x, y] != 0)
+                return false;
+                        
+            n++;
+            board[x, y] = n;
+
+            if (n == X * X)
+                return true;
+
+
+            for (int i = 0; i < 8; i++)
+                if (setKnight(x + step[i, 0], y + step[i, 1], board, step, n))
+                    return true;
+            n--;
+            board[x, y] = 0;
+
+            return false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //Кони           
-
+            int n = 0;
             int[,] step = new int[8, 2] { { 1, -2 }, { 2, -1 }, { 2, 1 }, { 1, 2 }, { -1, 2 }, { -2, 1 }, { -2, -1 }, { -1, -2 } };
 
             input();
 
             int[,] board = new int[X, Y];
 
-            
+            try { setKnight(0, 0, board, step, n); }
+            catch (Exception ex) { MessageBox.Show("Ход не возможен \n\n" + ex); }
+
+            outputKnight(board);
 
         }
 
