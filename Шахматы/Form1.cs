@@ -15,6 +15,13 @@ namespace Шахматы
 
         private int X, Y;
 
+        private int[,] step = new int[8, 2] { { 1, -2 }, { 2, -1 }, { 2, 1 }, { 1, 2 }, { -1, 2 }, { -2, 1 }, { -2, -1 }, { -1, -2 } };
+
+        static int N = 1000;
+
+        private int[,] board1 = new int[N, N];
+        private int[,] board2 = new int[N, N];
+
         public Form1()
         {
             InitializeComponent();
@@ -52,65 +59,65 @@ namespace Шахматы
             }
         }
 
-        private void outputQueen(int[,] board)
+        private void outputQueen()
         {
             for (int y = 0; y < Y; y++)
                 for (int x = 0; x < X; x++)
-                    if (board[x, y] == -1)
+                    if (board1[x, y] == -1)
                     {
                         dataGridView1.Rows[y].Cells[x].Value = "X";
                         dataGridView1.Rows[y].Cells[x].Style.BackColor = Color.Gray;
                     }
         }
 
-        private void setQueen(int i, int j, int[,] board)
+        private void setQueen(int i, int j)
         {
             for (int x = 0; x < X; x++)
             {
-                board[x, j] += 1;
-                board[i, x] += 1;
+                board1[x, j] += 1;
+                board1[i, x] += 1;
 
                 if (0 <= i - j + x && i - j + x < X)
-                    board[i - j + x, x] += 1;
+                    board1[i - j + x, x] += 1;
                 if (0 <= i + j - x && i + j - x < X)
-                    board[i + j - x, x] += 1;
+                    board1[i + j - x, x] += 1;
 
-                board[i, j] = -1;
+                board1[i, j] = -1;
             }
         }
 
-        private void removeQueen(int i, int j, int[,] board)
+        private void removeQueen(int i, int j)
         {
             for (int x = 0; x < X; x++)
             {
-                board[x, j] -= 1;
-                board[i, x] -= 1;
+                board1[x, j] -= 1;
+                board1[i, x] -= 1;
 
                 if (0 <= i - j + x && i - j + x < X)
-                    board[i - j + x, x] -= 1;
+                    board1[i - j + x, x] -= 1;
                 if (0 <= i + j - x && i + j - x < X)
-                    board[i + j - x, x] -= 1;
+                    board1[i + j - x, x] -= 1;
 
-                board[i, j] = 0;
+                board1[i, j] = 0;
             }
         }
 
-        private void solve(int i, int[,] board)
+        private void solve(int i)
         {
             for (int j = 0; j < X; j++)
-                if (board[i, j] == 0)
+                if (board1[i, j] == 0)
                 {
-                    setQueen(i, j, board);
+                    setQueen(i, j);
 
                     if (i == X - 1)
                     {
-                        outputQueen(board);
+                        outputQueen();
                         break;
                     }
                     else
-                        solve(i + 1, board);
+                        solve(i + 1);
 
-                    removeQueen(i, j, board);
+                    removeQueen(i, j);
                 }
         }
 
@@ -118,40 +125,37 @@ namespace Шахматы
         {
             //Ферзи
 
-            input();
+            input();            
 
-            int[,] board = new int[X, Y];
-
-            solve(0, board);
+            solve(0);
         }
 
-        private void outputKnight(int[,] board)
+        private void outputKnight()
         {
             for (int y = 0; y < Y; y++)
                 for (int x = 0; x < X; x++)
-                    dataGridView1.Rows[y].Cells[x].Value = board[x, y];
+                    dataGridView1.Rows[y].Cells[x].Value = board2[x, y];
         }
 
-        private bool setKnight(int x, int y, int[,] board, int[,] step, int n)
+        private bool setKnight(int x, int y, int n)
         {            
             if ((x < 0) || (x >= X) || (y < 0) || (y >= X))
                 return false;
 
-            if (board[x, y] != 0)
+            if (board2[x, y] != 0)
                 return false;
                         
             n++;
-            board[x, y] = n;
+            board2[x, y] = n;
 
             if (n == X * X)
                 return true;
 
-
             for (int i = 0; i < 8; i++)
-                if (setKnight(x + step[i, 0], y + step[i, 1], board, step, n))
+                if (setKnight(x + step[i, 0], y + step[i, 1], n))
                     return true;
             n--;
-            board[x, y] = 0;
+            board2[x, y] = 0;
 
             return false;
         }
@@ -159,17 +163,14 @@ namespace Шахматы
         private void button2_Click(object sender, EventArgs e)
         {
             //Кони           
-            int n = 0;
-            int[,] step = new int[8, 2] { { 1, -2 }, { 2, -1 }, { 2, 1 }, { 1, 2 }, { -1, 2 }, { -2, 1 }, { -2, -1 }, { -1, -2 } };
+            int n = 0;            
 
             input();
 
-            int[,] board = new int[X, Y];
-
-            try { setKnight(0, 0, board, step, n); }
+            try { setKnight(0, 0, n); }
             catch (Exception ex) { MessageBox.Show("Ход не возможен \n\n" + ex); }
 
-            outputKnight(board);
+            outputKnight();
 
         }
 
