@@ -35,6 +35,7 @@ namespace Шахматы
             this.textBoxX = new System.Windows.Forms.TextBox();
             this.textBoxY = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,12 +109,25 @@ namespace Шахматы
             this.label1.Text = "X";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Gray;
+            this.button3.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold);
+            this.button3.Location = new System.Drawing.Point(444, 236);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(249, 50);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Лабиринт";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(705, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxY);
             this.Controls.Add(this.textBoxX);
@@ -136,6 +150,7 @@ namespace Шахматы
         private System.Windows.Forms.TextBox textBoxX;
         private System.Windows.Forms.TextBox textBoxY;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
     }
 }
 
