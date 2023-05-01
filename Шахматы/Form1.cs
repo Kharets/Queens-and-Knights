@@ -285,6 +285,9 @@ namespace Шахматы
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+            textBox1.Font = new Font("Microsoft Sans Serif", 16f);
+
             textBox1.Text = "";
 
             int[,] matrix = new int [count_matrix, 2] { { 10, 20}, { 20, 50}, { 50, 40}, { 40, 20} };
@@ -324,6 +327,9 @@ namespace Шахматы
         //подстрока
         private void button5_Click(object sender, EventArgs e)
         {
+
+            textBox1.Font = new Font("Microsoft Sans Serif", 16f);
+
             textBox1.Text = "";
 
             string s1 = "nhfycajhvf";
@@ -438,6 +444,8 @@ namespace Шахматы
         private void button6_Click(object sender, EventArgs e)
         {
 
+            textBox1.Font = new Font("Microsoft Sans Serif", 16f);
+
             textBox1.Text = "";
 
 
@@ -470,8 +478,12 @@ namespace Шахматы
 
         }
 
+        //станции
         private void button7_Click(object sender, EventArgs e)
         {
+
+            textBox1.Font = new Font("Microsoft Sans Serif", 16f);
+
             textBox1.Text = "";
 
             Random rand = new Random();
@@ -536,20 +548,100 @@ namespace Шахматы
             textBox1.Text += "\r\nОбщая стоимость выбранных нами станций: ";
 
             textBox1.Text += " " + price;
+        }
+        //отрезки
 
-
-
-
+        bool cross(double ax1, double ay1, double ax2, double ay2,
+           double bx1, double by1, double bx2, double by2)
+        {
+            double v1 = (bx2 - bx1) * (ay1 - by1) - (by2 - by1) * (ax1 - bx1);
+            double v2 = (bx2 - bx1) * (ay2 - by1) - (by2 - by1) * (ax2 - bx1);
+            double v3 = (ax2 - ax1) * (by1 - ay1) - (ay2 - ay1) * (bx1 - ax1);
+            double v4 = (ax2 - ax1) * (by2 - ay1) - (ay2 - ay1) * (bx2 - ax1);
+            return (v1 * v2 < 0 && v3 * v4 < 0);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
 
+            textBox1.Font = new Font("Microsoft Sans Serif", 32f);
+
+            textBox1.Text = "";
+
+            double x1 = double.Parse(textBoxX1.Text);
+            double y1 = double.Parse(textBoxY1.Text);
+            double x2 = double.Parse(textBoxX2.Text);
+            double y2 = double.Parse(textBoxY2.Text);
+
+            double x3 = double.Parse(textBoxX3.Text);
+            double y3 = double.Parse(textBoxY3.Text);
+            double x4 = double.Parse(textBoxX4.Text);
+            double y4 = double.Parse(textBoxY4.Text);
+
+
+            textBox1.Text = (cross(x1, y1, x2, y2, x3, y3, x4, y4) ? "True" : "False");
         }
+        //Треугольник
         private void button9_Click(object sender, EventArgs e)
         {
+            textBox1.Font = new Font("Microsoft Sans Serif", 20f);
+
+            textBox1.Text = "";
+
+            double x1 = double.Parse(textBoxX1.Text);
+            double y1 = double.Parse(textBoxY1.Text);
+            double x2 = double.Parse(textBoxX2.Text);
+            double y2 = double.Parse(textBoxY2.Text);
+
+            double x3 = double.Parse(textBoxX3.Text);
+            double y3 = double.Parse(textBoxY3.Text);
+            double x = double.Parse(textBoxX4.Text);
+            double y = double.Parse(textBoxY4.Text);
+
+            if ((x1 == x2 && x2 == x3) || (y1 == y2 && y2 == y3))
+            {
+                textBox1.Text += "Неверные координаты треугольника!";
+            }
+            else
+            {
+                double s = Math.Abs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)) / 2;
+                double s1 = Math.Abs((x2 - x1) * (y - y1) - (x - x1) * (y2 - y1)) / 2;
+                double s2 = Math.Abs((x - x1) * (y3 - y1) - (x3 - x1) * (y - y1)) / 2;
+                double s3 = Math.Abs((x2 - x) * (y3 - y) - (x3 - x) * (y2 - y)) / 2; 
+
+                if (s == s1 + s2 + s3)
+                    textBox1.Text += "Точка в треугольнике";
+                else
+                    textBox1.Text += "Точка вне треугольника";
+            }
 
         }
+        //Окружность
+        private void button10_Click(object sender, EventArgs e)
+        {
 
+            textBox1.Font = new Font("Microsoft Sans Serif", 20f);
+
+            textBox1.Text = "";
+
+            int a = int.Parse(textBoxX1.Text);
+            int b = int.Parse(textBoxY1.Text);
+
+            int R = int.Parse(textBoxX2.Text);
+
+            int x = int.Parse(textBoxX4.Text);
+            int y = int.Parse(textBoxY4.Text);
+
+
+            double S = Math.Sqrt(Math.Pow((x - a), 2) + Math.Pow((y - b), 2));            
+
+            if (S < R)
+               textBox1.Text += "Точка внутри окружности.";
+            else if (S == R)
+                textBox1.Text += "Точка прямо на окружности.";
+            else
+                textBox1.Text += "Точка снаружи окружности.";
+
+        }
     }
 }

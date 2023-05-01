@@ -8,3 +8,13 @@ D:\кодики\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.csp
 D:\кодики\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.csproj.CoreCompileInputs.cache
 D:\кодики\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.exe
 D:\кодики\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.pdb
+D:\CODE\C++++\Шахматы\Шахматы\bin\Debug\Шахматы.exe.config
+D:\CODE\C++++\Шахматы\Шахматы\bin\Debug\Шахматы.exe
+D:\CODE\C++++\Шахматы\Шахматы\bin\Debug\Шахматы.pdb
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.csproj.AssemblyReference.cache
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.Form1.resources
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.Properties.Resources.resources
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.csproj.GenerateResource.cache
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.csproj.CoreCompileInputs.cache
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.exe
+D:\CODE\C++++\Шахматы\Шахматы\obj\Debug\Шахматы.pdb
