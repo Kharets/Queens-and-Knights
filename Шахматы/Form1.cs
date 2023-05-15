@@ -40,30 +40,41 @@ namespace Шахматы
 
 
 
-
-
         public Form1()
         {
             InitializeComponent();
         }
 
+
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            textBox2.Visible = false;
+        }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.Visible = true;
+        }
+
+
         private void textBoxX_TextChanged(object sender, EventArgs e)
         {
-            try { textBoxY.Text = textBoxX.Text; }
-            catch { }
+            //try { textBoxY.Text = textBoxX.Text; }
+            //catch { }
         }
         private void textBoxY_TextChanged(object sender, EventArgs e)
         {
-            try { textBoxX.Text = textBoxY.Text; }
-            catch { }
+            //try { textBoxX.Text = textBoxY.Text; }
+            //catch { }
         }
+
 
         private void input()
         {
             try
             {
                 X = int.Parse(textBoxX.Text);
-                Y = int.Parse(textBoxY.Text);
+                Y = int.Parse(textBoxY.Text);                               
 
                 dataGridView1.RowCount = Y;
                 dataGridView1.ColumnCount = X;
@@ -86,7 +97,7 @@ namespace Шахматы
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Неверные входные данные \n\n" + ex);
+                MessageBox.Show("Неверные входные данные \r\n" + ex);
             }
         }
 
@@ -154,7 +165,7 @@ namespace Шахматы
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Ферзи
+            //Ферзи          +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             input();
 
@@ -197,7 +208,7 @@ namespace Шахматы
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Кони           
+            //Кони                                             +++++++++++++++++++++++++++++++++++++++++++++++++  
             int n = 0;            
 
             input();
@@ -207,7 +218,7 @@ namespace Шахматы
                     board2[y, x] = 0;
 
             try { setKnight(0, 0, n); }
-            catch (Exception ex) { MessageBox.Show("Ход не возможен \n\n" + ex); }
+            catch (Exception ex) { MessageBox.Show("Ход не возможен \r\n" + ex); }
 
             outputKnight();
 
@@ -270,7 +281,7 @@ namespace Шахматы
             MessageBox.Show("Тупиковый лабиринт!");
                 
         }
-
+        // Maze   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void button3_Click(object sender, EventArgs e)
         {
             input();
@@ -280,7 +291,7 @@ namespace Шахматы
         }
 
 
-        //матрицы
+        //матрицы            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private const int count_matrix = 4;
 
         private void button4_Click(object sender, EventArgs e)
@@ -324,7 +335,7 @@ namespace Шахматы
             textBox1.Text += "Return: " + table[count_matrix - 2, 0].ToString();
 
         }  
-        //подстрока
+        //подстрока               +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void button5_Click(object sender, EventArgs e)
         {
 
@@ -419,7 +430,7 @@ namespace Шахматы
 
         }
 
-        //паркет
+        //паркет                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         private bool good(int mask)
         {
@@ -478,7 +489,7 @@ namespace Шахматы
 
         }
 
-        //станции
+        //станции                          +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void button7_Click(object sender, EventArgs e)
         {
 
@@ -549,7 +560,7 @@ namespace Шахматы
 
             textBox1.Text += " " + price;
         }
-        //отрезки
+        //отрезки                   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         bool cross(double ax1, double ay1, double ax2, double ay2,
            double bx1, double by1, double bx2, double by2)
@@ -581,7 +592,10 @@ namespace Шахматы
 
             textBox1.Text = (cross(x1, y1, x2, y2, x3, y3, x4, y4) ? "True" : "False");
         }
-        //Треугольник
+
+        
+
+        //Треугольник                   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void button9_Click(object sender, EventArgs e)
         {
             textBox1.Font = new Font("Microsoft Sans Serif", 20f);
@@ -616,7 +630,10 @@ namespace Шахматы
             }
 
         }
-        //Окружность
+        
+
+
+        //Окружность        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         private void button10_Click(object sender, EventArgs e)
         {
 
@@ -642,6 +659,179 @@ namespace Шахматы
             else
                 textBox1.Text += "Точка снаружи окружности.";
 
+        }
+
+        
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textBox2.Text = "";
+
+                int n = int.Parse(textBoxX.Text);
+                n++;
+                int[] mass = new int[n];
+                
+                for (int i = 2; i < n; i++)
+                {
+                    mass[i] = mass[i - 1] + 1;
+                    if ((i % 2 == 0) && (mass[i / 2] + 1 < mass[i]))
+                    {
+                        mass[i] = mass[i / 2] + 1;
+                    }
+                }
+                for (int i = 0; i < n; i++)
+                    textBox2.Text += mass[i] + " ";
+                textBox2.Text += "\r\n";
+                for (int i = 0; i < n; i++)
+                    textBox2.Text += i + " ";
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неверные входные данные \r\n" + ex);
+            }            
+        }
+
+        
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textBox2.Text = "";
+                int m = int.Parse(textBoxX.Text);
+                int n = int.Parse(textBoxY.Text); ;
+
+                int[,] matrix = new int[n, m];
+                
+                for (int i = 0; i < n; i++)
+                    for (int j = 0; j < m; j++)
+                    {
+                        if (i == 0 || j == 0)
+                        {
+                            matrix[i, j] = 1;
+                        }
+                        else
+                        {
+                            matrix[i, j] = 0;
+                        }
+                    }
+                for (int i = 1; i < n; i++)
+                {
+                    for (int j = 1; j < m; j++)
+                    {
+                        matrix[i, j] = matrix[i - 1, j] + matrix[i, j - 1];
+                    }
+                }
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < m; j++)
+                    {
+                        textBox2.Text += matrix[i, j] + " ";
+                    }
+                    textBox2.Text += "\r\n";
+                }
+                textBox2.Text += matrix[n - 1, m - 1];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неверные входные данные \r\n" + ex);
+            }            
+        }
+
+
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                X = int.Parse(textBoxX.Text);
+                Y = int.Parse(textBoxY.Text);
+
+                dataGridView1.RowCount = Y;
+                dataGridView1.ColumnCount = X;
+
+                for (int y = 0; y < Y; y++)                 //покраска доски
+                    for (int x = 0; x < X; x++)
+                    {
+                        if ((x + y) % 2 == 0)
+                        {
+                            dataGridView1.Rows[y].Cells[x].Style.BackColor = Color.FromArgb(225, 190, 145);// Yellow
+                        }
+                        else
+                        {
+                            dataGridView1.Rows[y].Cells[x].Style.BackColor = Color.FromArgb(187, 128, 51);// Brown
+                        }
+
+                        //dataGridView1.Rows[y].Cells[x].Value = null;
+                    }
+
+                int[,] matrix0 = { { 5, 2, 3, -2, -2 }, { -1, 4, 1, -3, 10 }, { 6, -2, 4, -5, 0 }, { 12, -8, -5, 3, 6 } };
+
+                for (int i = 0; i < 4; i++)
+                    for (int j = 0; j < 5; j++)
+                        dataGridView1.Rows[i].Cells[j].Value = matrix0[i, j];
+
+                //int n = 4, m = 5;
+                //textBox2.Text = "";
+
+                int m = X;
+                int n = Y;
+
+                int[,] matrix = new int[n, m];
+
+
+                for (int i = 0; i < n; i++)
+                    for (int j = 0; j < m; j++)
+                        matrix[i, j] = Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value);
+
+                for (int i = 1; i < m; i++)
+                    matrix[0, i] += matrix[0, i - 1];
+                for (int i = 1; i < n; i++)
+                    matrix[i, 0] += matrix[i - 1, 0];
+                for (int i = 1; i < n; i++)
+                {
+                    for (int j = 1; j < m; j++)
+                    {
+                        matrix[i, j] += (matrix[i - 1, j] > matrix[i, j - 1]) ? matrix[i - 1, j] : matrix[i, j - 1];
+                    }
+                }
+                int a = n - 1, b = m - 1;
+                while (true)
+                {
+                    dataGridView1.Rows[a].Cells[b].Style.BackColor = Color.Green;
+
+                    //textBox2.Text += (a + 1) + " " + (b + 1) + "\r\n";
+
+                    if (a == 0 && b == 0)
+                        break;
+                    if (a == 0)
+                    {
+                        b--;
+                        continue;
+                    }
+                    if (b == 0)
+                    {
+                        a--;
+                        continue;
+                    }
+                    if (matrix[a - 1, b] > matrix[a, b - 1])
+                        a--;
+                    else
+                        b--;
+                }
+
+                //for (int i = 0; i < n; i++)
+                //    for (int j = 0; j < m; j++)
+                //        dataGridView1.Rows[i].Cells[j].Value = matrix[i, j];
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неверные входные данные \r\n" + ex);
+            }
         }
     }
 }

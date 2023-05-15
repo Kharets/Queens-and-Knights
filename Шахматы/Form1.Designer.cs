@@ -38,6 +38,10 @@ namespace Шахматы
             this.button3 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,6 +67,8 @@ namespace Шахматы
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -80,7 +86,6 @@ namespace Шахматы
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(414, 414);
             this.dataGridView1.TabIndex = 0;
@@ -89,7 +94,7 @@ namespace Шахматы
             // 
             this.button1.BackColor = System.Drawing.Color.Gray;
             this.button1.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(440, 100);
+            this.button1.Location = new System.Drawing.Point(440, 89);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(250, 50);
             this.button1.TabIndex = 1;
@@ -101,7 +106,7 @@ namespace Шахматы
             // 
             this.button2.BackColor = System.Drawing.Color.Gray;
             this.button2.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(440, 156);
+            this.button2.Location = new System.Drawing.Point(440, 145);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(250, 50);
             this.button2.TabIndex = 2;
@@ -145,7 +150,7 @@ namespace Шахматы
             // 
             this.button3.BackColor = System.Drawing.Color.Gray;
             this.button3.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(440, 212);
+            this.button3.Location = new System.Drawing.Point(440, 201);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(250, 50);
             this.button3.TabIndex = 6;
@@ -167,6 +172,12 @@ namespace Шахматы
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Teal;
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.button13);
+            this.tabPage1.Controls.Add(this.button12);
+            this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.textBoxY);
@@ -180,6 +191,57 @@ namespace Шахматы
             this.tabPage1.Size = new System.Drawing.Size(698, 427);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Вкладка 1";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.LightSalmon;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(6, 6);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(425, 295);
+            this.textBox2.TabIndex = 10;
+            this.textBox2.Visible = false;
+            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.Gray;
+            this.button13.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold);
+            this.button13.Location = new System.Drawing.Point(440, 369);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(250, 50);
+            this.button13.TabIndex = 9;
+            this.button13.Text = "3";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Gray;
+            this.button12.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold);
+            this.button12.Location = new System.Drawing.Point(440, 313);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(250, 50);
+            this.button12.TabIndex = 8;
+            this.button12.Text = "2";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.Gray;
+            this.button11.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Bold);
+            this.button11.Location = new System.Drawing.Point(440, 257);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(250, 50);
+            this.button11.TabIndex = 7;
+            this.button11.Text = "1";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // tabPage2
             // 
@@ -395,6 +457,7 @@ namespace Шахматы
             this.textBox1.Location = new System.Drawing.Point(6, 6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(425, 295);
             this.textBox1.TabIndex = 8;
             // 
@@ -470,6 +533,26 @@ namespace Шахматы
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(488, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 28);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "x";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(589, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 28);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "y";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,6 +608,12 @@ namespace Шахматы
         private System.Windows.Forms.TextBox textBoxX2;
         private System.Windows.Forms.TextBox textBoxY1;
         private System.Windows.Forms.TextBox textBoxX1;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }
 
